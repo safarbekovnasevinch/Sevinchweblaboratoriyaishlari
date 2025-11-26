@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitoblar katalogi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') no-repeat center center/cover;
+      margin: 0;
+      padding: 30px;
+    }
+
+    .book-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .book-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .book-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .book-info {
+      padding: 15px;
+      text-align: justify;
+    }
+
+    .book-info p:first-child {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .book-info i {
+      margin-right: 5px;
+      color: #555;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .btn {
+      border: 1px solid #6a5acd;
+      background: #fff;
+      color: #555;
+      border-radius: 5px;
+      padding: 6px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #6a5acd;
+      color: #fff;
+    }
+
+    .btn2 {
+      background: #6a5acd;
+      color: #fff;
+    }
+
+    .btn2:hover {
+      background: #4b3bbd;
+    }
+  </style>
+</head>
+<body>
+
+<div class="book-container">
+
+  <!-- 1-kitob -->
+  <div class="book-card">
+    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800" alt="O‘tkan kunlar">
+    <div class="book-info">
+      <p><i class="fa-solid fa-user"></i> Abdulla Qodiriy
+         <i class="fa-solid fa-calendar-days"></i> 1926
+         <i class="fa-solid fa-eye"></i> 1200
+      </p>
+      <p>O‘zbek adabiyotining durdonasi bo‘lgan “O‘tkan kunlar” romani milliy uyg‘onish davrini aks ettiradi.</p>
+      <div class="buttons">
+        <button class="btn">Batafsil</button>
+        <button class="btn btn2">O‘qish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2-kitob -->
+  <div class="book-card">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Alpomish_doston_kitobi.jpg/800px-Alpomish_doston_kitobi.jpg" alt="Alpomish muqovasi">
+  <div class="book-info">
+    <p>
+      <i class="fa-solid fa-user"></i> O‘zbek xalq dostoni
+      <i class="fa-solid fa-calendar-days"></i> Qadimiy
+      <i class="fa-solid fa-eye"></i> 980
+    </p>
+    <p>
+      “Alpomish” — xalqimizning jasorat, sadoqat va vatanparvarlik haqidagi eng mashhur dostoni. U o‘zbek epik adabiyotining durdonasi hisoblanadi.
+    </p>
+    <div class="buttons">
+      <button class="btn">Batafsil</button>
+      <button class="btn btn2">O‘qish</button>
+    </div>
+  </div>
+</div>
+
+  <!-- 3-kitob -->
+  <div class="book-card">
+    <img src="https://images.unsplash.com/photo-1526312426976-f4d754fa9bd6?w=800" alt="Ikki eshik orasi">
+    <div class="book-info">
+      <p><i class="fa-solid fa-user"></i> O‘tkir Hoshimov
+         <i class="fa-solid fa-calendar-days"></i> 1980
+         <i class="fa-solid fa-eye"></i> 760
+      </p>
+      <p>“Ikki eshik orasi” romani inson hayoti, taqdir va jamiyatdagi muammolarni yoritadi.</p>
+      <div class="buttons">
+        <button class="btn">Batafsil</button>
+        <button class="btn btn2">O‘qish</button>
+      </div>
+    </div>
+  </div>
+  <!-- 4-kitob -->
+  <div class="book-card">
+    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800" alt="Boburnoma">
+    <div class="book-info">
+      <p><i class="fa-solid fa-user"></i> Z.M. Bobur
+         <i class="fa-solid fa-calendar-days"></i> 16-asr
+         <i class="fa-solid fa-eye"></i> 630
+      </p>
+      <p>“Boburnoma” — buyuk shoir va sarkarda Boburning hayoti, siyosiy faoliyati va davr voqealari haqida yozilgan asar.</p>
+      <div class="buttons">
+        <button class="btn">Batafsil</button>
+        <button class="btn btn2">O‘qish</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
