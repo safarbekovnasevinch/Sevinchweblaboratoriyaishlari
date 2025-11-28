@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<div class="grid-container">
+  <div class="header"><h1>Kitoblar katalogi</h1></div>
+
+  <div class="menu">
+    <ul>
+      <li>Romanlar</li>
+      <li>Detektivlar</li>
+      <li>Ilmiy kitoblar</li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <h1>"Alchemist" romani</h1>
+    <p>"Alchemist" — Paulo Koelyo tomonidan yozilgan mashhur roman bo‘lib, inson hayotidagi orzular va ularni amalga oshirish yo‘llari haqida hikoya qiladi.</p>
+    <p>Kitob inson ruhiy o‘sishi va hayot maqsadlarini anglashga yordam beradi.</p>
+    <p>U butun dunyo bo‘ylab millionlab nusxalarda sotilgan va motivatsion asar sifatida tanilgan.</p>
+  </div>
+
+  <div class="facts">
+    <h2>Qiziqarli faktlar:</h2>
+    <ul>
+      <li>"Alchemist" birinchi marta 1988 yilda nashr qilingan</li>
+      <li>Kitob 80 dan ortiq tillarga tarjima qilingan</li>
+    </ul>
+  </div>
+
+  <div class="footer"><p>Ta'sirchan effektni ko'rish uchun brauzer oynasining o'lchamini o'zgartiring.</p></div>
+</div>
+</body>
+</html>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lucida Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header'
+    'menu'
+    'main'
+    'facts'
+    'footer';
+  gap: 15px;
+  padding: 10px;
+}
+
+/* Header */
+.header {
+  grid-area: header;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  text-align: center;
+  color: #ffffff;
+  padding: 25px 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.header > h1 {
+  font-size: 42px;
+  margin: 0;
+}
+
+/* Menu */
+.menu {
+  grid-area: menu;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #2575fc;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu li:hover {
+  background-color: #6a11cb;
+  transform: scale(1.05);
+}
+
+/* Content */
+.content {
+  grid-area: main;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.content > h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #2575fc;
+}
+
+.content > p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+/* Facts */
+.facts {
+  grid-area: facts;
+  background-color: #fff3cd;
+  border-left: 5px solid #ffc107;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.facts > h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #856404;
+}
+
+.facts li {
+  margin-bottom: 5px;
+}
+
+/* Footer */
+.footer {
+  grid-area: footer;
+  background-color: #2575fc;
+  color: #ffffff;
+  text-align: center;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+  font-size: 15px;
+}
+
+/* Media query: katta ekranlarda yonma-yon */
+@media (min-width: 1500px) {
+  .grid-container {
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas:
+      "header header header"
+      "menu main facts"
+      "footer footer footer";
+  }
+}
+</style>
