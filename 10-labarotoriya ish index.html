@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitoblar</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: radial-gradient(circle at top, #e0f2fe, #bfdbfe, #93c5fd);
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    .book {
+        position: absolute;
+        width: 70px;
+        animation: fall linear infinite;
+        opacity: 0.95;
+        filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15));
+    }
+
+    @keyframes fall {
+        0% { transform: translateY(-150px) rotate(0deg); opacity: 0.9; }
+        100% { transform: translateY(110vh) rotate(360deg); opacity: 0.8; }
+    }
+</style>
+</head>
+
+<body>
+
+<script>
+    const icons = [
+        "https://cdn-icons-png.flaticon.com/512/29/29302.png",
+        "https://cdn-icons-png.flaticon.com/512/2232/2232688.png",
+        "https://cdn-icons-png.flaticon.com/512/3062/3062634.png",
+        "https://cdn-icons-png.flaticon.com/512/1048/1048953.png"
+    ];
+
+    function createBook() {
+        let book = document.createElement("img");
+        book.src = icons[Math.floor(Math.random() * icons.length)];
+        book.className = "book";
+
+        book.style.left = Math.random() * 100 + "vw";
+        book.style.animationDuration = (3 + Math.random() * 4) + "s";
+        book.style.width = (60 + Math.random() * 40) + "px";
+
+        document.body.appendChild(book);
+
+        setTimeout(() => book.remove(), 7000);
+    }
+
+    setInterval(createBook, 400);
+</script>
+
+</body>
+</html>
