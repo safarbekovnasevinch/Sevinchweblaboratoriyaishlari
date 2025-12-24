@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O‘zbek kitoblari – JSON misol</title>
+
+    <style>
+        body {
+            background-color: #f4f7fb;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #2b4c7e;
+            color: white;
+            padding: 30px 0 10px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .welcome-text {
+            font-size: 18px;
+            color: #dbe6ff;
+            margin-top: 5px;
+        }
+
+        nav {
+            background-color: #1f3b66;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 95%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e8effa;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f5fb;
+        }
+
+        input {
+            padding: 8px;
+            width: 50%;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>O‘zbek kitoblari</h1>
+    <p class="welcome-text">JSON formatda kitoblar ro‘yxati va qidiruv</p>
+</header>
+
+<nav>
+    <a href="index.html">Bosh sahifa</a>
+    <a href="mualliflar.html">Mualliflar</a>
+    <a href="kutubxona.html">Kutubxona</a>
+</nav>
+
+<h2>O‘zbek kitoblari jadvali (JSONdan olingan)</h2>
+<input id="searchInput" type="text" placeholder="Kitob nomi yoki muallif bo‘yicha qidirish...">
+
+<table>
+    <thead>
+        <tr>
+            <th>Kitob nomi</th>
+            <th>Muallif</th>
+            <th>Janr</th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+        <!-- JSON ma’lumot shu yerga chiqadi -->
+    </tbody>
+</table>
+
+<script>
+    // O‘zbek kitoblari JSON ma'lumotlari
+    const books = [
+        {"nomi":"O‘tkan kunlar","muallif":"Abdulla Qodiriy","janr":"Roman"},
+        {"nomi":"Mehrobdan chayon","muallif":"Abdulla Qodiriy","janr":"Roman"},
+        {"nomi":"Kecha va kunduz","muallif":"Cho‘lpon","janr":"Roman"},
+        {"nomi":"Xamsa","muallif":"Alisher Navoiy","janr":"Dostonlar"},
+        {"nomi":"Lison ut-tayr","muallif":"Alisher Navoiy","janr":"Falsafiy asar"},
+        {"nomi":"She’rlar","muallif":"Erkin Vohidov","janr":"She’riyat"},
+        {"nomi":"O‘zbekiston tarixi","muallif":"Turli mualliflar","janr":"Ilmiy"},
+        {"nomi":"Ikki eshik orasi","muallif":"O‘tkir Hoshimov","janr":"Roman"},
+        {"nomi":"Dunyoning ishlari","muallif":"O‘tkir Hoshimov","janr":"Qissalar"},
+        {"nomi":"Sariq devni minib","muallif":"Xudoyberdi To‘xtaboyev","janr":"Bolalar adabiyoti"},
+        {"nomi":"Algoritmlar asoslari","muallif":"O‘zbek mualliflari","janr":"Ilmiy"},
+        {"nomi":"Ona tilim – jon tilim","muallif":"Abdulla Oripov","janr":"She’riyat"},
+        {"nomi":"Ulug‘bek xazinasi","muallif":"Odil Yoqubov","janr":"Tarixiy roman"},
+        {"nomi":"Yulduzli tunlar","muallif":"Pirimqul Qodirov","janr":"Tarixiy roman"},
+        {"nomi":"Boburnoma","muallif":"Zahiriddin Muhammad Bobur","janr":"Tarixiy-memuar"}
+    ];
+
+    // Jadvalga JSON ma’lumotlarni chiqarish
+    const tableBody = document.getElementById("myTable");
+
+    books.forEach(book => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${book.nomi}</td>
+            <td>${book.muallif}</td>
+            <td>${book.janr}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+
+    // Qidiruv funksiyasi
+    document.getElementById("searchInput").addEventListener("keyup", function () {
+        const value = this.value.toLowerCase();
+        const rows = tableBody.getElementsByTagName("tr");
+
+        Array.from(rows).forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(value) ? "" : "none";
+        });
+    });
+</script>
+
+</body>
+</html>
