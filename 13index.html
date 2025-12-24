@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+ <meta charset="UTF-8">
+ <title>O'zbek Kitoblari</title>
+ <style>
+ body{
+   font-family: Arial, sans-serif;
+   background: #f7f7f7;
+   margin: 0;
+   padding: 20px;
+ }
+ h1{
+   text-align: center;
+   color: #2b3d4f;
+ }
+ .container{
+   max-width: 900px;
+   margin: auto;
+   background: #fff;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+ }
+ .book-item{
+   border-bottom: 1px solid #ddd;
+   padding: 10px 0;
+ }
+ button{
+   background: #0077cc;
+   color: white;
+   padding: 6px 12px;
+   border: none;
+   cursor: pointer;
+   border-radius: 5px;
+ }
+ button:hover{
+   background: #005fa3;
+ }
+ form{
+   margin-top: 20px;
+   background: #eef3ff;
+   padding: 15px;
+   border-radius: 10px;
+ }
+ input, select{
+   padding: 7px;
+   margin: 5px 0;
+   width: 100%;
+ }
+ .details{
+   background: #fafafa;
+   padding: 10px;
+   margin-top: 10px;
+   border-left: 3px solid #0077cc;
+ }
+ </style>
+</head>
+<body>
+
+ <h1>O'zbek Kitoblari</h1>
+
+ <div class="container">
+
+ <!-- FILTR (change event) -->
+ <label><b>Kitoblarni janr bo‘yicha filtrlash:</b></label>
+ <select id="filter">
+   <option value="barchasi">Barchasi</option>
+   <option value="roman">Roman</option>
+   <option value="she'riyat">She'riyat</option>
+   <option value="ilmiy">Ilmiy</option>
+ </select>
+
+ <div id="bookList"></div>
+
+ <!-- FORM (submit event) -->
+ <form id="bookForm">
+   <h3>Yangi kitob qo‘shish</h3>
+
+   <input type="text" id="name" placeholder="Kitob nomi" required>
+
+   <select id="category" required>
+     <option value="">Janrni tanlang</option>
+     <option value="roman">Roman</option>
+     <option value="she'riyat">She'riyat</option>
+     <option value="ilmiy">Ilmiy</option>
+   </select>
+
+   <input type="text" id="info" placeholder="Kitob haqida qisqa ma’lumot" required>
+
+   <button type="submit">Qo‘shish</button>
+ </form>
+
+ </div>
+
+<script>
+// Boshlang‘ich kitoblar
+let books = [
+ {name: "O‘tkan kunlar", category: "roman", info: "Abdulla Qodiriyning mashhur romani."},
+ {name: "Xamsa", category: "she'riyat", info: "Alisher Navoiy qalamiga mansub buyuk asar."},
+ {name: "Algoritmlar asoslari", category: "ilmiy", info: "Dasturlashga oid ilmiy kitob."}
+];
+
+// Kitoblarni chiqarish funksiyasi
+function displayBooks(){
+ let filterValue = document.getElementById("filter").value;
+ let listDiv = document.getElementById("bookList");
+ listDiv.innerHTML = "";
+
+ books
+   .filter(b => filterValue === "barchasi" || b.category === filterValue)
+   .forEach((book, index) => {
+
+     let item = document.createElement("div");
+     item.className = "book-item";
+     item.innerHTML = `
+       <h3>${book.name}</h3>
+       <button onclick="showDetails(${index})">Batafsil</button>
+       <div id="details-${index}" class="details" style="display:none">
+         <p>${book.info}</p>
+       </div>
+     `;
+     listDiv.appendChild(item);
+   });
+}
+
+displayBooks();
+
+// CLICK EVENT — batafsil ko‘rsatish
+function showDetails(i){
+ let block = document.getElementById("details-" + i);
+ block.style.display = (block.style.display === "none") ? "block" : "none";
+}
+
+// SUBMIT EVENT — yangi kitob qo‘shish
+document.getElementById("bookForm").addEventListener("submit", function(e){
+ e.preventDefault();
+
+ let name = document.getElementById("name").value;
+ let category = document.getElementById("category").value;
+ let info = document.getElementById("info").value;
+
+ books.push({name, category, info});
+ displayBooks();
+
+ // Formani tozalash
+ document.getElementById("bookForm").reset();
+});
+
+// CHANGE EVENT — filtr ishlashi
+document.getElementById("filter").addEventListener("change", displayBooks);
+</script>
+
+</body>
+</html>
